@@ -5,8 +5,6 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  TextField,
-  MenuItem,
   IconButton,
   Box,
   Typography,
@@ -14,6 +12,8 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import CommonTextField from "./Textfield";
+import CommonDropdown from "./Dropdown";
 
 export interface Field {
   name: string;
@@ -21,7 +21,7 @@ export interface Field {
   type?: "text" | "select";
   required?: boolean;
   placeholder?: string;
-  options?: string[];
+  options?: { label: string; value: string }[];
   icon?: "search";
 }
 
@@ -48,7 +48,6 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
   cancelText = "Cancel",
   saveText = "Save",
   dialogWidth = 640,
-  dataKey = "items",
 }) => {
   const [entries, setEntries] = useState<Record<string, string>[]>([
     Object.fromEntries(fields.map((f) => [f.name, ""])),
@@ -113,42 +112,31 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
           >
             {fields.map((field) => (
               <Box key={field.name} sx={{ flex: 1 }}>
-                <Typography
-                  variant="subtitle2"
-                  sx={{
-                    mb: 0.5,
-                    fontWeight: 600,
-                    fontFamily: "'Open Sans', sans-serif",
-                  }}
-                >
-                  {field.label}{" "}
-                  {field.required && <span style={{ color: "red" }}>*</span>}
-                </Typography>
-
                 {field.type === "select" ? (
-                  <TextField
-                    fullWidth
-                    select
+                  <CommonDropdown
+                    label={field.label}
                     value={entry[field.name]}
                     onChange={(e) =>
-                      handleChange(index, field.name, e.target.value)
+                      handleChange(index, field.name, e.target.value as string)
+                    }
+                    options={
+                      field.options?.map((opt) => ({
+                        label: opt.label,
+                        value: opt.value,
+                      })) || []
                     }
                     placeholder={field.placeholder || "Select"}
-                  >
-                    {field.options?.map((opt) => (
-                      <MenuItem key={opt} value={opt}>
-                        {opt}
-                      </MenuItem>
-                    ))}
-                  </TextField>
+                    required={field.required}
+                  />
                 ) : (
-                  <TextField
-                    fullWidth
+                  <CommonTextField
+                    label={field.label}
                     placeholder={field.placeholder || "Enter value"}
                     value={entry[field.name]}
                     onChange={(e) =>
                       handleChange(index, field.name, e.target.value)
                     }
+                    required={field.required}
                     InputProps={
                       field.icon === "search"
                         ? {
@@ -190,7 +178,11 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
           borderTop: "1px solid #D9D9D9",
         }}
       >
-        <Button variant="outlined" onClick={onClose} sx={{ textTransform: "uppercase" }}>
+        <Button
+          variant="outlined"
+          onClick={onClose}
+          sx={{ textTransform: "uppercase" }}
+        >
           {cancelText}
         </Button>
         <Button

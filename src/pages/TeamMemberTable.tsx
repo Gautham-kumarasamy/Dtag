@@ -122,7 +122,12 @@ const TeamMemberTable: React.FC = () => {
       type: "select",
       placeholder: "Select role",
       required: true,
-      options: ["Manager", "Analyst", "Auditor", "Reviewer"],
+      options: [
+        { label: "Manager", value: "Manager" },
+        { label: "Analyst", value: "Analyst" },
+        { label: "Auditor", value: "Auditor" },
+        { label: "Reviewer", value: "Reviewer" },
+      ],
     },
   ];
 
