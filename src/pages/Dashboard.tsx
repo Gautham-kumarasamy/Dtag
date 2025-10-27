@@ -11,6 +11,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import { DateRange } from "@mui/x-date-pickers-pro";
 import dayjs, { Dayjs } from "dayjs";
+import CommonDropdown from "../components/Dropdown";
+import CommonTextField from "../components/Textfield";
 
 interface Engagement {
   engagementName: string;
@@ -32,6 +34,7 @@ interface Column {
   label: string;
   sortable: boolean;
 }
+// const engagements: Engagement[] = [];
 const engagements: Engagement[] = [
   {
     engagementName: "Project Phoenix",
@@ -258,71 +261,50 @@ const Dashboard: React.FC = () => {
                 mt: 1,
               }}
             >
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <Typography sx={{ fontWeight: 600, fontSize: "13px", mb: 0.5 }}>
-                  Engagement Name
-                </Typography>
-                <TextField
-                  select
-                  value={filters.engagementName}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleFilterChange("engagementName", e.target.value)
-                  }
-                  sx={{ width: 260 }}
-                  size="small"
-                >
-                  <MenuItem value="">All Engagement Names</MenuItem>
-                  {Array.from(new Set(engagements.map((e) => e.engagementName))).map(
-                    (name) => (
-                      <MenuItem key={name} value={name}>
-                        {name}
-                      </MenuItem>
-                    )
-                  )}
-                </TextField>
-              </Box>
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <Typography sx={{ fontWeight: 600, fontSize: "13px", mb: 0.5 }}>
-                  Engagement Type
-                </Typography>
-                <TextField
-                  select
-                  value={filters.engagementType}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleFilterChange("engagementType", e.target.value)
-                  }
-                  sx={{ width: 260 }}
-                  size="small"
-                >
-                  <MenuItem value="">All Engagement Types</MenuItem>
-                  <MenuItem value="Financial Data">Financial Data</MenuItem>
-                  <MenuItem value="Audit">Audit</MenuItem>
-                </TextField>
-              </Box>
+              <CommonDropdown
+                label="Engagement Name"
+                value={filters.engagementName}
+                onChange={(e) =>
+                  handleFilterChange("engagementName", e.target.value)
+                }
+                options={[
+                  { value: "", label: "All Engagement Names" },
+                  ...Array.from(
+                    new Set(engagements.map((e) => e.engagementName))
+                  ).map((name) => ({ value: name, label: name })),
+                ]}
+                sx={{ width: 380 }}
+              />
 
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <Typography sx={{ fontWeight: 600, fontSize: "13px", mb: 0.5 }}>
-                  Company Name
-                </Typography>
-                <TextField
-                  select
-                  value={filters.companyName}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleFilterChange("companyName", e.target.value)
-                  }
-                  sx={{ width: 260 }}
-                  size="small"
-                >
-                  <MenuItem value="">All Company Names</MenuItem>
-                  {Array.from(new Set(engagements.map((e) => e.companyName))).map(
-                    (name) => (
-                      <MenuItem key={name} value={name}>
-                        {name}
-                      </MenuItem>
-                    )
-                  )}
-                </TextField>
-              </Box>
+              <CommonDropdown
+                label="Engagement Type"
+                value={filters.engagementType}
+                onChange={(e) =>
+                  handleFilterChange("engagementType", e.target.value)
+                }
+                options={[
+                  { value: "", label: "All Engagement Types" },
+                  { value: "Financial Data", label: "Financial Data" },
+                  { value: "Audit", label: "Audit" },
+                ]}
+                sx={{ width: 380 }}
+              />
+
+              <CommonDropdown
+                label="Company Name"
+                value={filters.companyName}
+                onChange={(e) =>
+                  handleFilterChange("companyName", e.target.value)
+                }
+                options={[
+                  { value: "", label: "All Company Names" },
+                  ...Array.from(
+                    new Set(engagements.map((e) => e.companyName))
+                  ).map((name) => ({ value: name, label: name })),
+                ]}
+                sx={{ width: 380 }}
+              />
+
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <Typography sx={{ fontWeight: 600, fontSize: "13px", mb: 0.5 }}>
                   Reporting Period
@@ -336,7 +318,7 @@ const Dashboard: React.FC = () => {
                     localeText={{ start: "Start Date", end: "End Date" }}
                     format="DD/MM/YYYY"
                     slotProps={{
-                      textField: { size: "small", sx: { width: 260 } },
+                      textField: { size: "small", sx: { width: 380 } },
                     }}
                   />
                 </LocalizationProvider>
@@ -368,7 +350,11 @@ const Dashboard: React.FC = () => {
                     justifyContent: "center",
                     px: anyFilterApplied ? 0 : 1.5,
                     py: anyFilterApplied ? 0 : 0.5,
-                    borderRadius: "2px",
+                    borderRadius: 0.5,
+                    height: 32,
+                    width: 180,
+                    fontWeight: 600,
+                    fontSize: "14px",
                     backgroundColor: anyFilterApplied
                       ? "transparent"
                       : "#F7F7F7",
