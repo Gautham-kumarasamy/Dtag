@@ -5,6 +5,7 @@ import EngagementForm from './pages/CreateEngagement';
 import LandingPage from './pages/LandingPage';
 import Header from './layout/Header';
 import MUIHeader from './layout/MuiHeader';
+import Footer from './layout/Footer';
 
 function App() {
   // return <EngagementForm />;
@@ -17,6 +18,8 @@ function App() {
         <Route path='/engagement' element={<EngagementForm />} />
         <Route path='/header' element={<Header />} />
         <Route path='/mui-header' element={<MUIHeader />} />
+        <Route path='/footer' element={<Footer />} />
+
 
       </Routes>
     </BrowserRouter>
