@@ -1,4 +1,4 @@
-import deloitteLogo from "../icons/deloitte_logo.png";
+import deloitteLogo from "../icons/deloitte_logo.svg";
 import infoIcon from "../icons/Shape.png";
 import LandingPageImage from "../icons/landing_page_image.png";
 import "../LandingPage.css";
