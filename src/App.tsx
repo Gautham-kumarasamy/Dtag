@@ -2,7 +2,7 @@ import Dashboard from './pages/Dashboard';
 import TeamMemberTable from './pages/TeamMemberTable';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import EngagementForm from './pages/CreateEngagement';
-import LandingPage from './layout/Header';
+import LandingPage from './pages/LandingPage';
 import Header from './layout/Header';
 import MUIHeader from './layout/MuiHeader';
 

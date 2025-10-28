@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
 import { Button, Box, Typography, MenuItem, TextField } from "@mui/material";
 import CommonTable from "../components/CommonTable";
-import Header from "../components/Header";
+import Header from "../layout/Header";
 import Modal from "../components/Modal";
 import warningicon from "../icons/warning-icon.png";
 import clearicon from "../icons/clear-icon.png";
@@ -182,7 +182,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header showLocationDropdown={true} showUserSection={true} />
       <div
         style={{
           padding: "6px 24px",

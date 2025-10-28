@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import global from "../icons/globe_icon.png";
-import DeloitteLogo from "../icons/deloitte_logo.png";
+import DeloitteLogo from "../icons/deloitte_logo.svg";
 import infoIcon from "../icons/Shape.png";
 import Dropdown from "../icons/down-arrow.png";
 
@@ -10,19 +10,19 @@ interface HeaderProps {
   showUserSection?: boolean;
 }
 
-function Header({ 
-  showLocationDropdown = true, 
-  showUserSection = true 
+function Header({
+  showLocationDropdown = true,
+  showUserSection = true,
 }: HeaderProps) {
   return (
     <div className="header">
       <div className="header-left">
         <div className="header-logo">
-           <img src={DeloitteLogo} alt="info icon" />
+          <img src={DeloitteLogo} alt="info icon" />
         </div>
         <div className="header-title">Beacon Digital Tagging</div>
       </div>
-      
+
       <div className="header-right">
         {showLocationDropdown && (
           <div className="location-dropdown">
@@ -31,9 +31,9 @@ function Header({
             <img src={Dropdown} alt="info icon" />
           </div>
         )}
+        <img src={infoIcon} alt="info icon" />
         {showUserSection && (
           <>
-            <img src={infoIcon} alt="info icon" />
             <div className="user-avatar">D</div>
           </>
         )}
