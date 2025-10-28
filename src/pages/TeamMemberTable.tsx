@@ -132,8 +132,8 @@ const TeamMemberTable: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ backgroundColor: "#f5f5f5" }}>
-      <Box sx={{ p: 3, color: "text.primary" }}>
+    <Box >
+      <Box sx={{ p:0.2, color: "text.primary" }}>
         <Box
           sx={{
             display: "flex",

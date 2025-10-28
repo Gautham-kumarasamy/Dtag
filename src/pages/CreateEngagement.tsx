@@ -21,6 +21,7 @@ import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import { Dayjs } from "dayjs";
 import CommonDropdown, { DropdownOption } from "../components/Dropdown";
 import CommonTextField from "../components/Textfield";
+import TeamMemberTable from "./TeamMemberTable";
 
 interface FormData {
   engagementName: string;
@@ -311,56 +312,17 @@ const EngagementForm: React.FC = () => {
             </Box>
           </Box>
         </Paper>
-
+ <TeamMemberTable></TeamMemberTable>
         <Paper
           elevation={0}
-          sx={{
-            p: 1,
-            border: "1px solid #e0e0e0",
-            borderRadius: 1,
-            backgroundColor: "#fff",
-          }}
+        //   sx={{
+        //     p: 1,
+        //     border: "1px solid #e0e0e0",
+        //     borderRadius: 1,
+        //     backgroundColor: "#fff",
+        //   }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="h6"
-              sx={{
-                fontFamily: "'Open Sans', sans-serif",
-                fontSize: "12px",
-                fontWeight: 400,
-              }}
-            >
-              Team Members
-            </Typography>
-            <Button
-              variant="text"
-              startIcon={<Add />}
-              onClick={handleAddTeamMember}
-              sx={{
-                textTransform: "uppercase",
-                fontFamily: "'Open Sans', sans-serif",
-                color: "#999",
-                fontSize: "12px",
-                fontWeight: 400,
-                "&:hover": {
-                  backgroundColor: "transparent",
-                  color: "#00a3a1",
-                },
-              }}
-            >
-              Add Team Members
-            </Button>
-          </Box>
-
-          <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-
-          </Box>
+         
         </Paper>
 
         <Box
