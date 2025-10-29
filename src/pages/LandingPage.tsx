@@ -1,8 +1,7 @@
-import deloitteLogo from "../icons/deloitte_logo.svg";
-import infoIcon from "../icons/Shape.png";
 import LandingPageImage from "../icons/landing_page.svg";
 import "../LandingPage.css";
 import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 function LandingPage() {
   return (
     <div className="container-main">
@@ -14,12 +13,12 @@ function LandingPage() {
               Digital Tagging
             </div>
             <div className="content">
-              A secure internal platform for managing user access and engagement
-              permissions in compliance with Deloitte policies.
+              A secure internal platform for managing user access and
+              engagement permissions in compliance with Deloitte policies.
             </div>
             <div className="login-button">
               <button type="button" className="button">
-                Login
+                LOGIN
               </button>
           </div>
         </div>
@@ -29,6 +28,7 @@ function LandingPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

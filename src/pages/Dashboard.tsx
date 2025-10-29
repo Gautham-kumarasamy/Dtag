@@ -13,6 +13,7 @@ import { DateRange } from "@mui/x-date-pickers-pro";
 import dayjs, { Dayjs } from "dayjs";
 import CommonDropdown from "../components/Dropdown";
 import CommonTextField from "../components/Textfield";
+import { useNavigate } from "react-router-dom";
 
 interface Engagement {
   engagementName: string;
@@ -140,6 +141,7 @@ const Dashboard: React.FC = () => {
     companyName: "",
     dateRange: [null, null],
   });
+  const navigate = useNavigate();
 
   const columns: Column[] = [
     { id: "engagementName", label: "Engagement Name", sortable: true },
@@ -173,6 +175,10 @@ const Dashboard: React.FC = () => {
   const handleDelete = (row: Engagement | null) => {
     setOpenModal(true);
   };
+
+  const handleCreateEngagement = () => {
+    navigate("/engagement");
+  }
 
   const anyFilterApplied =
     filters.engagementName ||
@@ -214,6 +220,7 @@ const Dashboard: React.FC = () => {
             fontWeight: 600,
             fontFamily: "'Open Sans', sans-serif",
           }}
+          onClick={handleCreateEngagement}
         >
           Create Engagement
         </Button>
