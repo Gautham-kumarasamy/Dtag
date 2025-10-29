@@ -99,7 +99,14 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
         </IconButton>
       </DialogTitle>
 
-      <DialogContent sx={{ mt: 2, px: 3 }}>
+      <DialogContent
+        sx={{
+          mt: 2,
+          px: 3,
+          maxHeight: "400px",
+          overflowY: entries.length > 4 ? "auto" : "visible",
+        }}
+      >
         {entries.map((entry, index) => (
           <Box
             key={index}
