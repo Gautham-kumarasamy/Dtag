@@ -181,7 +181,7 @@ const Dashboard: React.FC = () => {
 
   const handleCreateEngagement = () => {
     navigate("/engagement");
-  }
+  };
 
   const anyFilterApplied =
     filters.engagementName ||

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -49,14 +49,21 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
   saveText = "Save",
   dialogWidth = 640,
 }) => {
+  const getInitialEntry = () => Object.fromEntries(fields.map((f) => [f.name, ""]));
+  
   const [entries, setEntries] = useState<Record<string, string>[]>([
-    Object.fromEntries(fields.map((f) => [f.name, ""])),
+    getInitialEntry(),
   ]);
+  useEffect(() => {
+    if (!open) {
+      setEntries([getInitialEntry()]);
+    }
+  }, [open]);
 
   const handleAddEntry = () => {
     setEntries([
       ...entries,
-      Object.fromEntries(fields.map((f) => [f.name, ""])),
+      getInitialEntry(),
     ]);
   };
 
@@ -66,15 +73,21 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
     setEntries(updated);
   };
 
+  const handleClose = () => {
+    setEntries([getInitialEntry()]);
+    onClose();
+  };
+
   const handleSave = () => {
     onSave(entries);
+    setEntries([getInitialEntry()]);
     onClose();
   };
 
   return (
     <Dialog
       open={open}
-      onClose={onClose}
+      onClose={handleClose}
       PaperProps={{
         sx: {
           width: dialogWidth,
@@ -94,7 +107,7 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
         }}
       >
         {title}
-        <IconButton onClick={onClose} size="small">
+        <IconButton onClick={handleClose} size="small">
           <CloseIcon />
         </IconButton>
       </DialogTitle>
@@ -187,7 +200,7 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
       >
         <Button
           variant="outlined"
-          onClick={onClose}
+          onClick={handleClose}
           sx={{ textTransform: "uppercase" }}
         >
           {cancelText}
