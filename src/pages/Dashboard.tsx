@@ -14,6 +14,9 @@ import dayjs, { Dayjs } from "dayjs";
 import CommonDropdown from "../components/Dropdown";
 import CommonTextField from "../components/Textfield";
 import { useNavigate } from "react-router-dom";
+import NotFoundPage from "../components/NotFoundPage";
+import notfoundimage from "../icons/not_found_image.svg";
+import Footer from "../layout/Footer";
 
 interface Engagement {
   engagementName: string;
@@ -178,7 +181,7 @@ const Dashboard: React.FC = () => {
 
   const handleCreateEngagement = () => {
     navigate("/engagement");
-  }
+  };
 
   const anyFilterApplied =
     filters.engagementName ||
@@ -192,7 +195,7 @@ const Dashboard: React.FC = () => {
       <div
         style={{
           padding: "6px 24px",
-          backgroundColor: "white",
+          // backgroundColor: "white",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -225,10 +228,21 @@ const Dashboard: React.FC = () => {
           Create Engagement
         </Button>
       </div>
-
-      <Box sx={{ backgroundColor: "#f5f5f5" }}>
-        <Box sx={{ p: 3, color: "text.primary" }}>
-          <Box
+      
+     {
+        engagements.length === 0 ? (
+          <div>
+          <NotFoundPage
+            title="No Engagements Found"
+            message="There are currently no engagements available. Please create a new engagement to get started."
+            imageSrc={notfoundimage}
+           />
+           <Footer />
+            </div>
+        ) : (
+          <Box sx={{ backgroundColor: "#f5f5f4" }}>
+            <Box sx={{ p: 3, color: "text.primary" }}>
+              <Box
             sx={{
               backgroundColor: "white",
               borderTopLeftRadius: 4,
@@ -410,8 +424,11 @@ const Dashboard: React.FC = () => {
             onEdit={handleEdit}
             onDelete={handleDelete}
             showPagination={true}
-          />
-          <Modal
+      />
+        </Box>
+      </Box>
+    )}
+      <Modal
             open={openModal}
             title="Delete engagement"
             message={`This engagement has one or more financial statements. Please delete the financial statement(s) before deleting the engagement.`}
@@ -425,8 +442,6 @@ const Dashboard: React.FC = () => {
             cancelText="CANCEL"
             onCancel={() => setOpenModal(false)}
           />
-        </Box>
-      </Box>
     </>
   );
 };
