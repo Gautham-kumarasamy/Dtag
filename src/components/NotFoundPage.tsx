@@ -17,7 +17,7 @@ const NotFoundPage: React.FC<NotFoundPageProps> = ({
   return (
     <Box
       sx={{
-        height: "65vh",
+        height: "75.9vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

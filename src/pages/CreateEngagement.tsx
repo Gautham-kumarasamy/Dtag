@@ -79,6 +79,8 @@ const EngagementForm: React.FC = () => {
       sx={{
         minHeight: "100vh",
         backgroundColor: "#f8f8f8",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Header showLocationDropdown={true} showUserSection={true} />
