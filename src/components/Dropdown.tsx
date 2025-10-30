@@ -197,18 +197,7 @@ const CommonDropdown: React.FC<CommonDropdownProps> = ({
           </MenuItem>
         ))}
       </Select>
-      {helperText && (
-        <FormHelperText
-          sx={{
-            fontFamily: "'Open Sans', sans-serif",
-            fontSize: "11px",
-            mt: 0.5,
-          }}
-        >
-          {helperText}
-        </FormHelperText>
-      )}
-    </FormControl>
+     </FormControl>
   );
 };
 

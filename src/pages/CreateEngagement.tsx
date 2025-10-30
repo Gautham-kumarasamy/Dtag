@@ -211,13 +211,12 @@ const EngagementForm: React.FC = () => {
                       size: "small",
                       sx: {
                         width: "100%",
-                        "& .MuiInputBase-root": {
-                          height: "36px",
-                          fontSize: "13px",
+
+                        "& .MuiPickersInputBase-sectionsContainer": {
+                          padding: "7px 4px",
                         },
-                        "& .MuiInputBase-input": {
-                          padding: "8px 12px",
-                          fontSize: "13px",
+                        "& .MuiOutlinedInput-root": {
+                          height: "40px",
                         },
                       },
                     },
