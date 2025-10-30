@@ -2,7 +2,6 @@ import React from "react";
 import {
   TextField,
   FormControl,
-  FormHelperText,
   Box,
   Typography,
   TextFieldProps,
@@ -16,7 +15,6 @@ interface CommonTextFieldProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   error?: boolean;
-  helperText?: string;
   disabled?: boolean;
   required?: boolean;
   fullWidth?: boolean;
@@ -39,7 +37,6 @@ const CommonTextField: React.FC<CommonTextFieldProps> = ({
   onChange,
   placeholder = "",
   error = false,
-  helperText = "",
   disabled = false,
   required = false,
   fullWidth = true,
@@ -110,7 +107,7 @@ const CommonTextField: React.FC<CommonTextFieldProps> = ({
           ...sx,
         }}
       />
-      {(showCharCount && maxLength) || helperText ? (
+      {showCharCount && maxLength ? (
         <Box
           sx={{
             display: "flex",
@@ -118,17 +115,7 @@ const CommonTextField: React.FC<CommonTextFieldProps> = ({
             alignItems: "center",
           }}
         >
-          {helperText && (
-            <FormHelperText
-              sx={{
-                fontFamily: "'Open Sans', sans-serif",
-                fontSize: "11px",
-                mt: 0.5,
-              }}
-            >
-              {helperText}
-            </FormHelperText>
-          )}
+        
           {showCharCount && maxLength && (
             <Typography
               variant="caption"
