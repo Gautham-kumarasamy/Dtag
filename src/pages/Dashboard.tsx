@@ -18,7 +18,7 @@ import NotFoundPage from "../components/NotFoundPage";
 import notfoundimage from "../icons/not_found_image.svg";
 import Footer from "../layout/Footer";
 import { ContainedButton } from "../components/Button";
-
+ 
 interface Engagement {
   engagementName: string;
   engagementType: string;
@@ -26,14 +26,14 @@ interface Engagement {
   reportingPeriod: string;
   creationDate: string;
 }
-
+ 
 interface Filters {
   engagementName: string;
   engagementType: string;
   companyName: string;
   dateRange: DateRange<Dayjs>;
 }
-
+ 
 interface Column {
   id: keyof Engagement;
   label: string;
@@ -132,7 +132,7 @@ const engagements: Engagement[] = [
     creationDate: "01/01/2024",
   },
 ];
-
+ 
 const Dashboard: React.FC = () => {
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
@@ -145,7 +145,7 @@ const Dashboard: React.FC = () => {
     dateRange: [null, null],
   });
   const navigate = useNavigate();
-
+ 
   const columns: Column[] = [
     { id: "engagementName", label: "Engagement Name", sortable: true },
     { id: "engagementType", label: "Engagement Type", sortable: false },
@@ -153,15 +153,15 @@ const Dashboard: React.FC = () => {
     { id: "reportingPeriod", label: "Reporting Period", sortable: true },
     { id: "creationDate", label: "Creation Date", sortable: true },
   ];
-
+ 
   const confirmDelete = () => {
     setOpenModal(false);
   };
-
+ 
   const handleFilterChange = (key: keyof Filters, value: any) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
-
+ 
   const handleClearFilters = () => {
     setFilters({
       engagementName: "",
@@ -170,29 +170,29 @@ const Dashboard: React.FC = () => {
       dateRange: [null, null],
     });
   };
-
+ 
   const handleEdit = (row: Engagement | null) => {
     if (!row) return;
   };
-
+ 
   const handleDelete = (row: Engagement | null) => {
     setOpenModal(true);
   };
-
+ 
   const handleCreateEngagement = () => {
     navigate("/engagement");
   };
-
+ 
   const anyFilterApplied =
     filters.engagementName ||
     filters.engagementType ||
     filters.companyName ||
     (filters.dateRange[0] && filters.dateRange[1]);
-
+ 
   const handleCreate = (): void => {
-    
+   
   };
-
+ 
   return (
     <>
       <Header showLocationDropdown={true} showUserSection={true} />
@@ -200,6 +200,7 @@ const Dashboard: React.FC = () => {
         style={{
           padding: "6px 24px",
           // backgroundColor: "white",
+          display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           borderTop: "1px solid #D9D9D9",
@@ -215,10 +216,10 @@ const Dashboard: React.FC = () => {
         >
           Engagements Dashboard
         </Typography>
-
+ 
       <ContainedButton onClick={handleCreateEngagement}>Create Engagement</ContainedButton>
       </div>
-      
+     
      {
         engagements.length === 0 ? (
           <div>
@@ -262,7 +263,7 @@ const Dashboard: React.FC = () => {
                 {engagements.length} items
               </Typography>
             </Box>
-
+ 
             <Box
               sx={{
                 display: "flex",
@@ -286,7 +287,7 @@ const Dashboard: React.FC = () => {
                 ]}
                 sx={{ width: 380 }}
               />
-
+ 
               <CommonDropdown
                 label="Engagement Type"
                 value={filters.engagementType}
@@ -300,7 +301,7 @@ const Dashboard: React.FC = () => {
                 ]}
                 sx={{ width: 380 }}
               />
-
+ 
               <CommonDropdown
                 label="Company Name"
                 value={filters.companyName}
@@ -315,7 +316,7 @@ const Dashboard: React.FC = () => {
                 ]}
                 sx={{ width: 380 }}
               />
-
+ 
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <Typography sx={{ fontWeight: 600, fontSize: "13px", mb: 0.5 }}>
                   Reporting Period
@@ -353,7 +354,7 @@ const Dashboard: React.FC = () => {
                 >
                   Clear
                 </Typography>
-
+ 
                 <Box
                   sx={{
                     display: "flex",
@@ -399,7 +400,7 @@ const Dashboard: React.FC = () => {
               </Box>
             </Box>
           </Box>
-
+ 
           <CommonTable<Engagement>
             columns={columns}
             rows={engagements}
@@ -435,5 +436,5 @@ const Dashboard: React.FC = () => {
     </>
   );
 };
-
+ 
 export default Dashboard;
