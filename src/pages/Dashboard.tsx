@@ -18,6 +18,7 @@ import NotFoundPage from "../components/NotFoundPage";
 import notfoundimage from "../icons/not_found_image.svg";
 import Footer from "../layout/Footer";
 import { ContainedButton } from "../components/Button";
+import "../pages/Dashboard.css";
 
 interface Engagement {
   engagementName: string;
@@ -189,9 +190,7 @@ const Dashboard: React.FC = () => {
     filters.companyName ||
     (filters.dateRange[0] && filters.dateRange[1]);
 
-  const handleCreate = (): void => {
-    
-  };
+  const handleCreate = (): void => {};
 
   return (
     <>
@@ -199,7 +198,6 @@ const Dashboard: React.FC = () => {
       <div
         style={{
           padding: "6px 24px",
-          // backgroundColor: "white",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -217,156 +215,144 @@ const Dashboard: React.FC = () => {
           Engagements Dashboard
         </Typography>
 
-      <ContainedButton onClick={handleCreateEngagement}>Create Engagement</ContainedButton>
+        <ContainedButton onClick={handleCreateEngagement}>
+          Create Engagement
+        </ContainedButton>
       </div>
-      
-     {
-        engagements.length === 0 ? (
-          <div>
+
+      {engagements.length === 0 ? (
+        <div>
           <NotFoundPage
             title="No Engagements Found"
             message="There are currently no engagements available. Please create a new engagement to get started."
             imageSrc={notfoundimage}
-           />
-           <Footer />
-            </div>
-        ) : (
-          <Box sx={{ backgroundColor: "#f5f5f4" }}>
-            <Box sx={{ p: 3, color: "text.primary" }}>
-              <Box
-            sx={{
-              backgroundColor: "white",
-              borderTopLeftRadius: 4,
-              borderTopRightRadius: 4,
-              p: 2,
-              display: "flex",
-              flexDirection: "column",
-              gap: 1.5,
-              borderBottom: "1px solid #D9D9D9",
-            }}
-          >
+          />
+        </div>
+      ) : (
+        <Box sx={{ backgroundColor: "#f5f5f4" }}>
+          <Box sx={{ p: 3, color: "text.primary" }}>
             <Box
               sx={{
+                backgroundColor: "white",
+                borderTopLeftRadius: 4,
+                borderTopRightRadius: 4,
+                p: 1,
                 display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
+                flexDirection: "column",
+                gap: 1.5,
+                borderBottom: "1px solid #D9D9D9",
               }}
             >
-              <Typography
-                variant="body2"
-                sx={{
-                  fontWeight: 500,
-                  fontFamily: "'Open Sans', sans-serif",
-                  fontSize: "16px",
-                }}
-              >
-                {engagements.length} items
-              </Typography>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 3,
-                flexWrap: "wrap",
-                mt: 1,
-              }}
-            >
-              <CommonDropdown
-                label="Engagement Name"
-                value={filters.engagementName}
-                onChange={(e) =>
-                  handleFilterChange("engagementName", e.target.value)
-                }
-                options={[
-                  { value: "", label: "All Engagement Names" },
-                  ...Array.from(
-                    new Set(engagements.map((e) => e.engagementName))
-                  ).map((name) => ({ value: name, label: name })),
-                ]}
-                sx={{ width: 380 }}
-              />
-
-              <CommonDropdown
-                label="Engagement Type"
-                value={filters.engagementType}
-                onChange={(e) =>
-                  handleFilterChange("engagementType", e.target.value)
-                }
-                options={[
-                  { value: "", label: "All Engagement Types" },
-                  { value: "Financial Data", label: "Financial Data" },
-                  { value: "Audit", label: "Audit" },
-                ]}
-                sx={{ width: 380 }}
-              />
-
-              <CommonDropdown
-                label="Company Name"
-                value={filters.companyName}
-                onChange={(e) =>
-                  handleFilterChange("companyName", e.target.value)
-                }
-                options={[
-                  { value: "", label: "All Company Names" },
-                  ...Array.from(
-                    new Set(engagements.map((e) => e.companyName))
-                  ).map((name) => ({ value: name, label: name })),
-                ]}
-                sx={{ width: 380 }}
-              />
-
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <Typography sx={{ fontWeight: 600, fontSize: "13px", mb: 0.5 }}>
-                  Reporting Period
-                </Typography>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DateRangePicker
-                    value={filters.dateRange}
-                    onChange={(newValue) =>
-                      handleFilterChange("dateRange", newValue)
-                    }
-                    localeText={{ start: "Start Date", end: "End Date" }}
-                    format="DD/MM/YYYY"
-                    slotProps={{
-                      textField: { size: "small", sx: { width: 380 } },
-                    }}
-                  />
-                </LocalizationProvider>
-              </Box>
               <Box
                 sx={{
                   display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "flex-start",
-                  ml: "auto",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                 }}
               >
                 <Typography
+                  variant="body2"
                   sx={{
-                    fontWeight: 600,
-                    fontSize: "13px",
-                    mb: 0.5,
-                    color: "transparent",
+                    fontWeight: 500,
+                    fontFamily: "'Open Sans', sans-serif",
+                    fontSize: "16px",
                   }}
                 >
-                  Clear
+                  {engagements.length} items
                 </Typography>
+              </Box>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-end",
+                  gap: 2.5, 
+                  mt: 1,
+                }}
+              >
+                <Box sx={{ flex: "1 1", maxWidth: 380 }}>
+                  <CommonDropdown
+                    label="Engagement Name"
+                    value={filters.engagementName}
+                    onChange={(e) =>
+                      handleFilterChange("engagementName", e.target.value)
+                    }
+                    options={[
+                      { value: "", label: "All Engagement Names" },
+                      ...Array.from(
+                        new Set(engagements.map((e) => e.engagementName))
+                      ).map((name) => ({ value: name, label: name })),
+                    ]}
+                    sx={{ width: "100%" }}
+                  />
+                </Box>
+
+                <Box sx={{ flex: "1 1", maxWidth: 380 }}>
+                  <CommonDropdown
+                    label="Engagement Type"
+                    value={filters.engagementType}
+                    onChange={(e) =>
+                      handleFilterChange("engagementType", e.target.value)
+                    }
+                    options={[
+                      { value: "", label: "All Engagement Types" },
+                      { value: "Financial Data", label: "Financial Data" },
+                      { value: "Audit", label: "Audit" },
+                    ]}
+                    sx={{ width: "100%" }}
+                  />
+                </Box>
+
+                <Box sx={{ flex: "1 1", maxWidth: 380 }}>
+                  <CommonDropdown
+                    label="Company Name"
+                    value={filters.companyName}
+                    onChange={(e) =>
+                      handleFilterChange("companyName", e.target.value)
+                    }
+                    options={[
+                      { value: "", label: "All Company Names" },
+                      ...Array.from(
+                        new Set(engagements.map((e) => e.companyName))
+                      ).map((name) => ({ value: name, label: name })),
+                    ]}
+                    sx={{ width: "100%" }}
+                  />
+                </Box>
+
+                <Box sx={{ flex: "1 1", maxWidth: 380 }}>
+                  <Typography
+                    sx={{ fontWeight: 600, fontSize: "13px", mb: 0.5 }}
+                  >
+                    Reporting Period
+                  </Typography>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DateRangePicker
+                      value={filters.dateRange}
+                      onChange={(newValue) =>
+                        handleFilterChange("dateRange", newValue)
+                      }
+                      localeText={{ start: "Start Date", end: "End Date" }}
+                      format="DD/MM/YYYY"
+                      slotProps={{
+                        textField: { size: "small", sx: { width: "100%" } },
+                      }}
+                    />
+                  </LocalizationProvider>
+                </Box>
 
                 <Box
                   sx={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    px: anyFilterApplied ? 0 : 1.5,
-                    py: anyFilterApplied ? 0 : 0.5,
-                    borderRadius: 0.5,
-                    height: 32,
-                    width: 180,
+                    height: 40,
+                    width: 150,
                     fontWeight: 600,
                     fontSize: "14px",
+                    borderRadius: 1,
                     backgroundColor: anyFilterApplied
                       ? "transparent"
                       : "#F7F7F7",
@@ -399,40 +385,42 @@ const Dashboard: React.FC = () => {
                 </Box>
               </Box>
             </Box>
-          </Box>
 
-          <CommonTable<Engagement>
-            columns={columns}
-            rows={engagements}
-            page={page}
-            rowsPerPage={rowsPerPage}
-            totalCount={engagements.length}
-            onPageChange={(_, newPage: number) => setPage(newPage)}
-            onRowsPerPageChange={(e: ChangeEvent<HTMLInputElement>) => {
-              setRowsPerPage(parseInt(e.target.value, 10));
-              setPage(0);
-            }}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-            showPagination={true}
-      />
+            <CommonTable<Engagement>
+              columns={columns}
+              rows={engagements}
+              page={page}
+              rowsPerPage={rowsPerPage}
+              totalCount={engagements.length}
+              onPageChange={(_, newPage: number) => setPage(newPage)}
+              onRowsPerPageChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setRowsPerPage(parseInt(e.target.value, 10));
+                setPage(0);
+              }}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+              showPagination={true}
+            />
+          </Box>
         </Box>
-      </Box>
-    )}
+      )}
+      <div className="footer-conatiner">
+        <Footer />
+      </div>
       <Modal
-            open={openModal}
-            title="Delete engagement"
-            message={`This engagement has one or more financial statements. Please delete the financial statement(s) before deleting the engagement.`}
-            icon={
-              <img
-                src={warningicon}
-                alt="warning"
-                style={{ width: 22, height: 22 }}
-              />
-            }
-            cancelText="CANCEL"
-            onCancel={() => setOpenModal(false)}
+        open={openModal}
+        title="Delete engagement"
+        message={`This engagement has one or more financial statements. Please delete the financial statement(s) before deleting the engagement.`}
+        icon={
+          <img
+            src={warningicon}
+            alt="warning"
+            style={{ width: 22, height: 22 }}
           />
+        }
+        cancelText="CANCEL"
+        onCancel={() => setOpenModal(false)}
+      />
     </>
   );
 };

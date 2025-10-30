@@ -86,21 +86,12 @@ const CommonTable = <T extends Record<string, any>>({
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      {/* <TableContainer
-        sx={{
-          maxHeight: "auto",
-          minHeight: 540,
-          overflowY: rows.length > rowsPerPage ? "auto" : "visible",
-          backgroundColor: "white",
-        }}
-      > */}
       <TableContainer
         sx={{
           maxHeight: rows.length > rowsPerPage ? 440 : "auto",
           minHeight: autoAdjustHeight
             ? Math.min(rows.length * 48 + 100, 440)
             : 540,
-        //   overflowY: rows.length > rowsPerPage ? "auto" : "visible",
           backgroundColor: "white",
           transition: "min-height 0.3s ease",
         }}
@@ -200,28 +191,6 @@ const CommonTable = <T extends Record<string, any>>({
                       </TableCell>
                     </TableRow>
                   ))}
-                {/* <TableRow
-                  sx={{
-                    height: `calc(440px - ${
-                      Math.min(
-                        rowsPerPage,
-                        sortedRows.slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        ).length
-                      ) * 48
-                    }px)`,
-                  }}
-                >
-                  <TableCell
-                    colSpan={columns.length + 1}
-                    sx={{
-                      borderBottom: "none",
-                      backgroundColor: "white",
-                      p: 0,
-                    }}
-                  />
-                </TableRow> */}
               </>
             ) : (
               <TableRow>
