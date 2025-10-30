@@ -14,6 +14,7 @@ import dayjs, { Dayjs } from "dayjs";
 import CommonDropdown from "../components/Dropdown";
 import CommonTextField from "../components/Textfield";
 import { useNavigate } from "react-router-dom";
+import { ContainedButton } from "../components/Button";
 
 interface Engagement {
   engagementName: string;
@@ -35,7 +36,6 @@ interface Column {
   label: string;
   sortable: boolean;
 }
-// const engagements: Engagement[] = [];
 const engagements: Engagement[] = [
   {
     engagementName: "Project Phoenix",
@@ -186,6 +186,10 @@ const Dashboard: React.FC = () => {
     filters.companyName ||
     (filters.dateRange[0] && filters.dateRange[1]);
 
+  const handleCreate = (): void => {
+    
+  };
+
   return (
     <>
       <Header showLocationDropdown={true} showUserSection={true} />
@@ -210,20 +214,7 @@ const Dashboard: React.FC = () => {
           Engagements Dashboard
         </Typography>
 
-        <Button
-          variant="contained"
-          sx={{
-            textTransform: "none",
-            px: 3,
-            height: 36,
-            backgroundColor: "#007CB0",
-            fontWeight: 600,
-            fontFamily: "'Open Sans', sans-serif",
-          }}
-          onClick={handleCreateEngagement}
-        >
-          Create Engagement
-        </Button>
+      <ContainedButton onClick={handleCreateEngagement}>Create Engagement</ContainedButton>
       </div>
 
       <Box sx={{ backgroundColor: "#f5f5f5" }}>
