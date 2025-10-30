@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import NotFoundPage from "../components/NotFoundPage";
 import notfoundimage from "../icons/not_found_image.svg";
 import Footer from "../layout/Footer";
+import { ContainedButton } from "../components/Button";
 
 interface Engagement {
   engagementName: string;
@@ -38,7 +39,6 @@ interface Column {
   label: string;
   sortable: boolean;
 }
-// const engagements: Engagement[] = [];
 const engagements: Engagement[] = [
   {
     engagementName: "Project Phoenix",
@@ -189,6 +189,10 @@ const Dashboard: React.FC = () => {
     filters.companyName ||
     (filters.dateRange[0] && filters.dateRange[1]);
 
+  const handleCreate = (): void => {
+    
+  };
+
   return (
     <>
       <Header showLocationDropdown={true} showUserSection={true} />
@@ -196,7 +200,6 @@ const Dashboard: React.FC = () => {
         style={{
           padding: "6px 24px",
           // backgroundColor: "white",
-          display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           borderTop: "1px solid #D9D9D9",
@@ -213,20 +216,7 @@ const Dashboard: React.FC = () => {
           Engagements Dashboard
         </Typography>
 
-        <Button
-          variant="contained"
-          sx={{
-            textTransform: "none",
-            px: 3,
-            height: 36,
-            backgroundColor: "#007CB0",
-            fontWeight: 600,
-            fontFamily: "'Open Sans', sans-serif",
-          }}
-          onClick={handleCreateEngagement}
-        >
-          Create Engagement
-        </Button>
+      <ContainedButton onClick={handleCreateEngagement}>Create Engagement</ContainedButton>
       </div>
       
      {

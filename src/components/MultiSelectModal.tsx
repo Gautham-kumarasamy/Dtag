@@ -4,11 +4,12 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Button,
   IconButton,
   Box,
   Typography,
+  Button,
 } from "@mui/material";
+import { OutlinedButton, ContainedButton } from "./Button";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
@@ -49,8 +50,9 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
   saveText = "Save",
   dialogWidth = 640,
 }) => {
-  const getInitialEntry = () => Object.fromEntries(fields.map((f) => [f.name, ""]));
-  
+  const getInitialEntry = () =>
+    Object.fromEntries(fields.map((f) => [f.name, ""]));
+
   const [entries, setEntries] = useState<Record<string, string>[]>([
     getInitialEntry(),
   ]);
@@ -61,10 +63,7 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
   }, [open]);
 
   const handleAddEntry = () => {
-    setEntries([
-      ...entries,
-      getInitialEntry(),
-    ]);
+    setEntries([...entries, getInitialEntry()]);
   };
 
   const handleChange = (index: number, field: string, value: string) => {
@@ -176,16 +175,13 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
         ))}
 
         <Button
-          startIcon={<AddIcon />}
           onClick={handleAddEntry}
           sx={{
             mt: 2,
-            textTransform: "uppercase",
             color: "#0073CF",
-            fontWeight: 600,
-            fontFamily: "'Open Sans', sans-serif",
           }}
         >
+          <AddIcon sx={{ mr: 1 }} />
           {addButtonText}
         </Button>
       </DialogContent>
@@ -198,28 +194,15 @@ const MultiSelectModal: React.FC<MultiSelectModalProps> = ({
           borderTop: "1px solid #D9D9D9",
         }}
       >
-        <Button
-          variant="outlined"
-          onClick={handleClose}
-          sx={{ textTransform: "uppercase" }}
-        >
-          {cancelText}
-        </Button>
-        <Button
-          variant="contained"
+        <OutlinedButton onClick={handleClose}>{cancelText}</OutlinedButton>
+        <ContainedButton
           onClick={handleSave}
-          sx={{
-            textTransform: "uppercase",
-            backgroundColor: "#007CB0",
-            fontWeight: 600,
-            fontFamily: "'Open Sans', sans-serif",
-          }}
           disabled={entries.some((entry) =>
             fields.some((f) => f.required && !entry[f.name])
           )}
         >
           {saveText}
-        </Button>
+        </ContainedButton>
       </DialogActions>
     </Dialog>
   );

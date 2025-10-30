@@ -17,8 +17,6 @@ interface CustomButtonProps {
   type?: 'button' | 'submit' | 'reset';
   sx?: SxProps<Theme>;
 }
-
-// Outlined Button Component
 export const OutlinedButton: React.FC<CustomButtonProps> = ({
   children,
   onClick,

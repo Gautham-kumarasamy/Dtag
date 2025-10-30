@@ -31,7 +31,7 @@ const TeamMemberTable: React.FC = () => {
               borderRadius: "50%",
               backgroundColor: "black",
               color: "white",
-              fontSize: "0.8rem",
+              fontSize: "10px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",

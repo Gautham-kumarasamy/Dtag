@@ -114,7 +114,7 @@ const CommonTable = <T extends Record<string, any>>({
                   sx={{
                     fontWeight: 600,
                     fontFamily: "'Open Sans', sans-serif",
-                    fontSize: "16px",
+                    fontSize: "13px",
                     py: 2,
                     "& .MuiTableSortLabel-root": {
                       flexDirection: "row-reverse",
@@ -147,12 +147,12 @@ const CommonTable = <T extends Record<string, any>>({
                         />
                       )}
                     >
-                      <span style={{ fontSize: "0.95rem", fontWeight: 600 }}>
+                      <span style={{ fontSize: "13px", fontWeight: 600 }}>
                         {col.label}
                       </span>
                     </TableSortLabel>
                   ) : (
-                    <span style={{ fontSize: "0.95rem", fontWeight: 600 }}>
+                    <span style={{ fontSize: "13px", fontWeight: 600 }}>
                       {col.label}
                     </span>
                   )}
@@ -230,7 +230,7 @@ const CommonTable = <T extends Record<string, any>>({
                   align="center"
                   sx={{
                     py: 6,
-                    fontSize: "1rem",
+                    fontSize: "13px",
                     fontWeight: 500,
                     color: "text.secondary",
                     height: 440,
