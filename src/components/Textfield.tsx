@@ -115,7 +115,6 @@ const CommonTextField: React.FC<CommonTextFieldProps> = ({
             alignItems: "center",
           }}
         >
-        
           {showCharCount && maxLength && (
             <Typography
               variant="caption"

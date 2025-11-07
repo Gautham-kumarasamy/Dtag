@@ -5,7 +5,7 @@ applyTo: '**'
 # Project Instructions for AI Assistant
 
 ## Project Context
-This is a Next.js e-commerce application with TypeScript and TSX, using SQL for database operations and Stripe for payments.
+This is a react.js application with TypeScript and TSX, using SQL for database operations.
 
 ## File Naming Conventions
 
@@ -138,12 +138,36 @@ When generating code, always follow these principles:
 - Use enums or const objects with `as const` for fixed sets of values
 - Leverage discriminated unions for complex state management
 
-## CRITICAL REMINDERS:
-- **Always generate TypeScript/TSX code**
-- **Use .tsx extension for components and .ts for utilities**
-- **Always define interfaces/types for props, state, and data**
-- **Include proper type annotations throughout the code**
-- **Use strict TypeScript configuration**
+---
+
+## Refactoring & Code Review Standards
+
+### 1. Refactoring Principles
+- Regularly refactor code to improve readability, maintainability, and performance.
+- Eliminate duplicate logic and extract reusable parts into utilities or shared components.
+- Simplify complex functions into smaller, single-responsibility units.
+- Optimize imports — remove unused imports and organize them logically.
+- Ensure consistent error handling, loading states, and naming across components.
+
+### 2. Naming Convention Validation
+- Verify all component, function, variable, and folder names match the **project naming conventions** defined above.
+- Check for adherence to:
+  - **PascalCase** for components and interfaces.
+  - **camelCase** for functions, variables, and utility files.
+  - **UPPER_SNAKE_CASE** for constants.
+  - **kebab-case** for folders.
+- Update any deviations to maintain consistency across the project.
+
+### 3. Standard Compliance Checklist
+-  Code follows the layered architecture pattern (Data → Domain → Presentation)
+-  No hardcoded values or magic numbers
+-  Proper TypeScript types/interfaces used
+-  Follows Tailwind CSS conventions for styling
+-  Uses Axios with error handling and interceptors
+-  Variable/function naming matches project standards
+-  Code formatted according to Prettier and ESLint rules
+
+---
 
 ## Layered Architecture (Current Project Structure)
 

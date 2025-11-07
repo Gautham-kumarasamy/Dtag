@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import { Button, Box, Typography, MenuItem, TextField } from "@mui/material";
+import { Box, Typography} from "@mui/material";
 import CommonTable from "../components/CommonTable";
 import Header from "../layout/Header";
 import Modal from "../components/Modal";
@@ -10,9 +10,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import { DateRange } from "@mui/x-date-pickers-pro";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import CommonDropdown from "../components/Dropdown";
-import CommonTextField from "../components/Textfield";
 import { useNavigate } from "react-router-dom";
 import NotFoundPage from "../components/NotFoundPage";
 import notfoundimage from "../icons/not_found_image.svg";
@@ -138,7 +137,6 @@ const Dashboard: React.FC = () => {
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [showFilters, setShowFilters] = useState<boolean>(false);
   const [filters, setFilters] = useState<Filters>({
     engagementName: "",
     engagementType: "",
@@ -154,10 +152,6 @@ const Dashboard: React.FC = () => {
     { id: "reportingPeriod", label: "Reporting Period", sortable: true },
     { id: "creationDate", label: "Creation Date", sortable: true },
   ];
-
-  const confirmDelete = () => {
-    setOpenModal(false);
-  };
 
   const handleFilterChange = (key: keyof Filters, value: any) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
@@ -189,8 +183,6 @@ const Dashboard: React.FC = () => {
     filters.engagementType ||
     filters.companyName ||
     (filters.dateRange[0] && filters.dateRange[1]);
-
-  const handleCreate = (): void => {};
 
   return (
     <>

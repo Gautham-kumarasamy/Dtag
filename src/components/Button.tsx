@@ -1,10 +1,10 @@
-import React from 'react';
-import { Button, SxProps, Theme } from '@mui/material';
+import React from "react";
+import { Button, SxProps, Theme } from "@mui/material";
 
 interface CustomButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'outlined' | 'contained' | 'text';
+  variant?: "outlined" | "contained" | "text";
   fontSize?: string | number;
   fontWeight?: number;
   padding?: string | number;
@@ -14,13 +14,13 @@ interface CustomButtonProps {
   borderRadius?: string | number;
   fullWidth?: boolean;
   disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
   sx?: SxProps<Theme>;
 }
 export const OutlinedButton: React.FC<CustomButtonProps> = ({
   children,
   onClick,
-  fontSize = '13px',
+  fontSize = "13px",
   fontWeight = 600,
   padding,
   paddingX = 1.5,
@@ -29,7 +29,7 @@ export const OutlinedButton: React.FC<CustomButtonProps> = ({
   borderRadius = 0.5,
   fullWidth = false,
   disabled = false,
-  type = 'button',
+  type = "button",
   sx = {},
 }) => {
   return (
@@ -40,19 +40,18 @@ export const OutlinedButton: React.FC<CustomButtonProps> = ({
       disabled={disabled}
       type={type}
       sx={{
-        textTransform: 'uppercase',
+        textTransform: "uppercase",
         fontFamily: "'Open Sans', sans-serif",
         fontSize,
         fontWeight,
-        border: '1px solid #007CB0',
-        color: '#0284bbff',
+        border: "1px solid #007CB0",
+        color: "#0284bbff",
         px: padding ?? paddingX,
         py: paddingY,
         height,
         borderRadius,
-        '&:hover': {
-          border: '1px solid #005a85',
-          backgroundColor: 'rgba(0, 124, 176, 0.04)',
+        "&:hover": {
+          border: "1px solid #005a85",
         },
         ...sx,
       }}
@@ -66,7 +65,7 @@ export const OutlinedButton: React.FC<CustomButtonProps> = ({
 export const ContainedButton: React.FC<CustomButtonProps> = ({
   children,
   onClick,
-  fontSize = '13px',
+  fontSize = "13px",
   fontWeight = 600,
   padding,
   paddingX = 2,
@@ -75,7 +74,7 @@ export const ContainedButton: React.FC<CustomButtonProps> = ({
   borderRadius = 0.5,
   fullWidth = false,
   disabled = false,
-  type = 'button',
+  type = "button",
   sx = {},
 }) => {
   return (
@@ -86,17 +85,17 @@ export const ContainedButton: React.FC<CustomButtonProps> = ({
       disabled={disabled}
       type={type}
       sx={{
-        textTransform: 'uppercase',
+        textTransform: "uppercase",
         fontFamily: "'Open Sans', sans-serif",
         fontSize,
         fontWeight,
-        backgroundColor: '#007CB0',
+        backgroundColor: "#007CB0",
         px: padding ?? paddingX,
         py: paddingY,
         height,
         borderRadius,
-        '&:hover': {
-          backgroundColor: '#005a85',
+        "&:hover": {
+          backgroundColor: "#005a85",
         },
         ...sx,
       }}

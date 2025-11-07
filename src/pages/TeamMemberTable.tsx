@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Box, Typography } from "@mui/material";
+import { Info } from "@mui/icons-material";
 import CommonTable, { Column } from "../components/CommonTable";
 import Modal from "../components/Modal";
 import MultiSelectModal, { Field } from "../components/MultiSelectModal";
@@ -173,6 +174,7 @@ const TeamMemberTable: React.FC = () => {
             }}
           >
             + Add Team Member(s)
+            <Info fontSize="small" sx={{ ml: 1, color: '#007CB0' }} />
           </Button>
         </Box>
 

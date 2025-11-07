@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
-
+import { Box, Typography } from "@mui/material";
 interface NotFoundPageProps {
   title?: string;
   message?: string;
@@ -12,7 +11,7 @@ interface NotFoundPageProps {
 const NotFoundPage: React.FC<NotFoundPageProps> = ({
   title = "No engagements have been created yet.",
   message = "There are currently no engagements available. Please create a new engagement to get started.",
-  imageSrc 
+  imageSrc,
 }) => {
   return (
     <Box

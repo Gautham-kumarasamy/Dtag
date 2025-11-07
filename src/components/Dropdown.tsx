@@ -3,7 +3,6 @@ import {
   FormControl,
   Select,
   MenuItem,
-  FormHelperText,
   Box,
   Typography,
   SelectChangeEvent,
@@ -81,7 +80,13 @@ const CommonDropdown: React.FC<CommonDropdownProps> = ({
   const defaultRenderValue = (selected: string | string[]): ReactNode => {
     if (!selected || (Array.isArray(selected) && selected.length === 0)) {
       return (
-        <span style={{ color: "#999", fontFamily: "'Open Sans', sans-serif", fontSize: "13px" }}>
+        <span
+          style={{
+            color: "#999",
+            fontFamily: "'Open Sans', sans-serif",
+            fontSize: "13px",
+          }}
+        >
           {placeholder}
         </span>
       );
@@ -197,7 +202,7 @@ const CommonDropdown: React.FC<CommonDropdownProps> = ({
           </MenuItem>
         ))}
       </Select>
-     </FormControl>
+    </FormControl>
   );
 };
 

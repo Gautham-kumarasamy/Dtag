@@ -6,6 +6,7 @@ import LandingPage from './pages/LandingPage';
 import Header from './layout/Header';
 import MUIHeader from './layout/MuiHeader';
 import Footer from './layout/Footer';
+import NotFoundPage from './components/NotFoundPage';
 
 function App() {
   // return <EngagementForm />;
@@ -19,6 +20,8 @@ function App() {
         <Route path='/header' element={<Header />} />
         <Route path='/mui-header' element={<MUIHeader />} />
         <Route path='/footer' element={<Footer />} />
+        <Route path='/not-found' element={<NotFoundPage />} />
+
 
 
       </Routes>

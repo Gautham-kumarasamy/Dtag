@@ -1,15 +1,6 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Typography,
-  Paper,
-  IconButton,
-  AppBar,
-  Toolbar,
-  SelectChangeEvent,
-} from "@mui/material";
-import { Info, Add, Help, AccountCircle } from "@mui/icons-material";
+import { Box, Typography, Paper, SelectChangeEvent } from "@mui/material";
+import { Info } from "@mui/icons-material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
@@ -21,6 +12,7 @@ import Footer from "../layout/Footer";
 import "../pages/CreateEngagement.css";
 import Header from "../layout/Header";
 import { ContainedButton, OutlinedButton } from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   engagementName: string;
@@ -36,6 +28,7 @@ const EngagementForm: React.FC = () => {
     companyName: "",
     country: "United States",
   });
+  const navigate = useNavigate();
 
   const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([
     null,
@@ -63,15 +56,11 @@ const EngagementForm: React.FC = () => {
     };
 
   const handleCancel = () => {
-    console.log("Cancel clicked");
+    navigate("/dashboard");
   };
 
   const handleCreate = () => {
     console.log("Create clicked", formData, dateRange);
-  };
-
-  const handleAddTeamMember = () => {
-    console.log("Add team member clicked");
   };
 
   return (
